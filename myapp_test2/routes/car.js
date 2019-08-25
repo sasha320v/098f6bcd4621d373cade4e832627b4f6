@@ -7,7 +7,17 @@ router.get('/', function (req, res, next) {
 
     return car.findAll({
         include: [{
-            all: true
+            model: baggage,
+            as: 'baggage',
+            attributes: ['mass']
+        },{
+            model: driver,
+            as: 'driver',
+            attributes: ['name']
+        },{
+            model: passenger,
+            as: 'passenger',
+            attributes: ['weight']
         }]
     })
         .then((data) => {

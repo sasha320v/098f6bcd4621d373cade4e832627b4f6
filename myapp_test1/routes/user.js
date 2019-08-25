@@ -1,14 +1,26 @@
 var express = require('express');
 var router = express.Router();
-var {room, user} = require('../models');
+var {house, apartment, room, user} = require('../models');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
     return user.findAll({
+        where: user.id = 1,
         include: [{
             model: room,
             as: 'room',
-            attributes: ['space', 'color']
+            attributes: ['space', 'color'],
+            include: [{
+                model: apartment,
+                as: 'apartment',
+                attributes: ['user'],
+                include: [{
+                    model: house,
+                    as: 'house',
+                    attributes: ['name']
+                }]
+            }]
         }]
     })
         .then( (data) => {

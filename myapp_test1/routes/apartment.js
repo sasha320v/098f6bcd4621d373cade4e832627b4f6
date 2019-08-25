@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var {apartment, house} = require('../models');
+var {apartment, house, room} = require('../models');
 
 
 /* GET home page. */
@@ -10,7 +10,11 @@ router.get('/', function(req, res, next) {
         include: [{
             model: house,
             as: 'house',
-            attributes: ['name', 'address']
+            attributes: ['name', 'address'],
+        },{
+            model: room,
+            as: 'room',
+            attributes: ['space']
         }]
     })
         .then( (data) => {
