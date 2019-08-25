@@ -1,23 +1,20 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('rooms', {
+    return queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      space: {
+      name: {
         type: Sequelize.STRING
       },
-      color: {
-        type: Sequelize.STRING
-      },
-      app_id: {
+      room_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'apartments',
+          model: 'rooms',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -34,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('rooms');
+    return queryInterface.dropTable('users');
   }
 };

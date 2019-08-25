@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var house = require('./routes/house');
 var apartment = require ('./routes/apartment');
 var room = require('./routes/room');
+var user = require('./routes/user');
 
 
 var app = express();
@@ -27,6 +28,8 @@ app.use('/', indexRouter);
 app.use('/house', house);
 app.use('/apartment', apartment);
 app.use('/room', room);
+app.use('/user', user);
+
 
 
 
